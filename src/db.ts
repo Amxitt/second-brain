@@ -1,39 +1,40 @@
 //create userModes and schemas here
-import mongoose, {Schema, Types} from "mongoose";
+import {model, Schema, Types} from "mongoose";
+import { string } from "zod";
 
 
 
-const userSchema = new mongoose.Schema({ 
+const UserSchema = new Schema({ 
     email: {type: String, unique: true, required: true},
     password: {type: String, required: true}
 });
 
 
 const contentTypes = ['image', 'video', 'article', 'audio']; //type of content
-const contentSchema = new mongoose.Schema({ //schema for content
+const ContentSchema = new Schema({ //schema for content
     link: {type: String, unique: true, required: true},
     type: {type: String, enum: contentTypes, required: true},
     title: {type: String, required: true},
-    tags: {type: Types.ObjectId, ref: 'Tag'},
+    tags: {type: string, ref: 'Tag'},
     userId: {type: Types.ObjectId, ref: 'User', required: true}
 })
 
-const tagsSchema = new mongoose.Schema({ //tags
+const TagsSchema = new Schema({ //tags
     title: {type: String, required: true, unique: true}
 })
 
-const linkSchema = new mongoose.Schema({ //publically shared link
+const LinkSchema = new Schema({ //publically shared link
     hash:{type: String, required: true},
     userid: {type: Types.ObjectId, required: true}
 })
 
 //creating models out of schema to call funcitonality on them.
-const userModel = mongoose.model("users", userSchema);
-const contentModel = mongoose.model("content", contentSchema);
-const tagsModel = mongoose.model("tags", tagsSchema);
-const linkModel = mongoose.model("links", linkSchema);
+const UserModel = model("users", UserSchema);
+const ContentModel = model("content", ContentSchema);
+const TagsModel = model("tags", TagsSchema);
+const LinkModel = model("links", LinkSchema);
 
 //exporting
 export{
-    userModel, contentModel, tagsModel, linkModel
+    UserModel, ContentModel, TagsModel, LinkModel
 }

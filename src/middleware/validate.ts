@@ -1,7 +1,7 @@
 import {z} from "zod"
 import type { Request, Response, NextFunction } from "express";
 const requiredBody = z.object({
-    email: z.string().email().toLowerCase().trim(),
+    username: z.string().email().toLowerCase().trim(),
     password: z.string().min(8).regex(/[A-Z]/).regex(/[a-z]/).regex(/[0-9]/)
 })
 
