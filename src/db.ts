@@ -1,5 +1,6 @@
 //create userModes and schemas here
 import {model, Schema, Types} from "mongoose";
+import { ref } from "node:process";
 import { string } from "zod";
 
 
@@ -25,7 +26,7 @@ const TagsSchema = new Schema({ //tags
 
 const LinkSchema = new Schema({ //publically shared link
     hash:{type: String, required: true},
-    userid: {type: Types.ObjectId, required: true}
+    userid: {type: Types.ObjectId, ref: 'User', required: true}
 })
 
 //creating models out of schema to call funcitonality on them.

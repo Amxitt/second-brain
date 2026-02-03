@@ -4,7 +4,7 @@ import { ContentModel } from "../db.js";
 const contentRouter = Router();
 
 contentRouter.use(authentication);
-contentRouter.post("/create-content", async (req, res) => {
+contentRouter.post("/content", async (req, res) => {
     const {type, link , title, tag} = req.body;
    if(!req.userId){
     return res.status(401).json({
@@ -28,7 +28,7 @@ contentRouter.post("/create-content", async (req, res) => {
     }
 })
 
-contentRouter.get("/all", async (req, res) =>{
+contentRouter.get("/content", async (req, res) =>{
     if(!req.userId){
         return res.status(401).json({
             message: "unauthorized"
@@ -48,7 +48,7 @@ contentRouter.get("/all", async (req, res) =>{
     }
 })
 
-contentRouter.delete("/delete-content", async (req, res)=>{
+contentRouter.delete("/content", async (req, res)=>{
    if(!req.userId){
         return res.status(401).json({
             message: "unauthorized"
