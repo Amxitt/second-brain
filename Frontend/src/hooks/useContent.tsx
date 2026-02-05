@@ -1,6 +1,7 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+
 import { BACKEND_URL } from "../pages/config";
+import { useState } from "react";
 
 export function useContent(){
     const [contents , setContents] = useState([])
@@ -11,18 +12,6 @@ export function useContent(){
             setContents(res.data.content)
         })
     }
-
-    useEffect(()=> {
-         refresh()
-         
-         let interval = setInterval(()=>{
-            refresh()
-         }, 10*1000)
-        
-         return ()=>{
-            clearInterval(interval);
-         }
-    },[])
 
     return {contents, refresh}
 }

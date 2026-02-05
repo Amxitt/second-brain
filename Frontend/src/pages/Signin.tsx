@@ -16,14 +16,17 @@ export const Signin = ()=>{
         
 
         console.log(username)
+    try{
        const res =  await axios.post(BACKEND_URL + "/user/signin", {
             username, password
         },{withCredentials: true})
-        console.log(res);
+        
         alert(res.data.message)
         navigate("/dashboard")
-
+    }catch(e){
+         alert("please set valid username and ensure your password inlcudes a uppercasee, a number and should be 8 letters in length to proceed.")
     }
+}
 
     return <div className="h-screen w-screen bg-gray-200 flex justify-center
     items-center ">

@@ -8,23 +8,27 @@ import { PlusIcons } from '../icons/PlusIcon'
 import { ShareIcon } from '../icons/ShareIcon'
 import { Sidebar } from '../components/Sidebar'
 import { useContent } from '../hooks/useContent'
+import { ShareModal } from '../components/ShareModal'
 
 
 function Dashboard() {
-  const [modalOpen , setModalOpen]  = useState(false);
-  const {contents, refresh} = useContent()
+  const [addmodalOpen , setaddModalOpen]  = useState(false);
+  const [sharemodalOpen , setShareModalOpen] = useState(false);
+  const {contents, refresh} = useContent();
+
 
   useEffect(()=>{
     refresh();
-  }, [modalOpen])
+  }, [addmodalOpen])
 
   return (<div className='flex'>
       <Sidebar/>
     <div className='bg-gray-100 h-screen w-full'>
-      <ContentModal open = {modalOpen} onClose={()=> setModalOpen(false)}/>
+      <ContentModal open = {addmodalOpen} onClose={()=> setaddModalOpen(false)}/>
+        <ShareModal open = {sharemodalOpen} onclose={()=>setShareModalOpen(false)} />
     <div className='flex justify-end gap-2 p-3'>
-      <Button variant='secondary' text = "Share Brain" size='md' startIcon={<ShareIcon size = "md"/>} />  
-      <Button onClick={()=>setModalOpen(true)} variant='primary' text = "Add content" size='md' startIcon={<PlusIcons size='md'/>} /> 
+      <Button onClick={()=>setShareModalOpen(true)} variant='secondary' text = "Share Brain" size='md' startIcon={<ShareIcon size = "md"/>} />  
+      <Button onClick={()=>setaddModalOpen(true)} variant='primary' text = "Add content" size='md' startIcon={<PlusIcons size='md'/>} /> 
     </div>
      <div className='flex gap-2  p-4 flex-wrap'>
       {contents.map(({type, link , title })=> <Card

@@ -4,7 +4,7 @@ import { Button } from "./Ui library/Button"
 import { Input } from "./Ui library/Input"
 import { BACKEND_URL } from "../pages/config"
 import axios from "axios"
-import type { sizes } from "../icons/size"
+
 
 enum ContentType {
      Youtube = "Youtube",
@@ -22,7 +22,7 @@ export const ContentModal = ({open , onClose}:{
        async function addContent(){
             const title = titleRef.current?.value
             const link = linkRef.current?.value
-            const tag = "lala"
+            const tag = "default"
             const res = await axios.post(BACKEND_URL + "/content/content" ,{
                 title, link, type, tag
             },{withCredentials: true})
@@ -40,7 +40,7 @@ export const ContentModal = ({open , onClose}:{
         <div className="w-screen h-screen fixed top-0 left-0
         flex justify-center">
             <div className="flex flex-col justify-center ">
-                <span className=" bg-white opacity-100 p-4 rounded">
+                <span className=" bg-white opacity-100 p-4 rounded-md shadow-md">
                     <div className="flex justify-end cursor-pointer" onClick={onClose}>
                         <CrossIcon size={"sm"}/>
                     </div>
