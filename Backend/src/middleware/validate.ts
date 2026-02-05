@@ -11,6 +11,7 @@ export const validate =  (req: Request, res: Response, next: NextFunction) => {
     if(!requiredBodyWithSuccess.success){
         return res.status(411).json({
             message: "Error in inputs",
+            success: false,
             errors: requiredBodyWithSuccess.error.format(),
         })
     }

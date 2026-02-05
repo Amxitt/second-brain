@@ -4,6 +4,7 @@ import bcrypt from "bcrypt"
 import { validate } from "../middleware/validate.js";
 import { JWT_PASSWORD } from "../config.js";
 import  jwt  from "jsonwebtoken";
+import { success } from "zod";
 
 
 const userRouter = Router();
@@ -15,6 +16,7 @@ userRouter.post("/signup",validate, async (req, res)=>{
     const findUser = await UserModel.findOne({email: username});
     if(findUser){
         return res.status(403).json({
+            success: false,
             message: "User already exists with this username"
         })
     }
@@ -22,10 +24,12 @@ userRouter.post("/signup",validate, async (req, res)=>{
         const hashpassword = await bcrypt.hash(password, 5);
         await UserModel.create({email: username , password: hashpassword})
         res.status(200).json({
+            success: true,
             message: "You are signed up Successfully"
         })
     } catch(e){
         res.status(500).json({
+            success: false,
             message: "server error"
         });
     };
@@ -52,6 +56,7 @@ userRouter.post("/signin", validate, async (req, res) => {
         res.cookie("token", token ,{
                 httpOnly: true
             }).status(200).json({
+                success: true,
                 message: "you are signed in"
             })
     }catch(e){
