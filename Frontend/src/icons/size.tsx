@@ -1,5 +1,5 @@
 export interface iconProp{
-  "size": "sm" | "md" | "lg"
+  size?: "sm" | "md" | "lg"
 }
 export const sizes = {
   "sm": "h-4 w-4",

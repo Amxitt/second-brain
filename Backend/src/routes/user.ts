@@ -4,7 +4,7 @@ import bcrypt from "bcrypt"
 import { validate } from "../middleware/validate.js";
 import { JWT_PASSWORD } from "../config.js";
 import  jwt  from "jsonwebtoken";
-import { success } from "zod";
+import { authentication } from "../middleware/auth.js";
 
 
 const userRouter = Router();
@@ -66,4 +66,8 @@ userRouter.post("/signin", validate, async (req, res) => {
     }
 })
 
+userRouter.post("/logout",authentication, (req, res)=>{
+    res.clearCookie("token")
+    res.status(200).json({message: "Logged Out"})
+})
 export default userRouter;

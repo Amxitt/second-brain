@@ -9,11 +9,13 @@ import { ShareIcon } from '../icons/ShareIcon'
 import { Sidebar } from '../components/Sidebar'
 import { useContent } from '../hooks/useContent'
 import { ShareModal } from '../components/ShareModal'
+import { LogoutModal } from '../components/LogoutModal'
 
 
 function Dashboard() {
   const [addmodalOpen , setaddModalOpen]  = useState(false);
   const [sharemodalOpen , setShareModalOpen] = useState(false);
+  const [logoutmodalOpen,  setLogoutModalOpen] = useState(false);
   const {contents, refresh} = useContent();
 
 
@@ -22,8 +24,9 @@ function Dashboard() {
   }, [addmodalOpen])
 
   return (<div className='flex'>
-      <Sidebar/>
+      <Sidebar onclick = {()=>setLogoutModalOpen(true)}/>
     <div className='bg-gray-100 h-screen w-full'>
+      <LogoutModal open = {logoutmodalOpen} onClose={()=>setLogoutModalOpen(false)}/>
       <ContentModal open = {addmodalOpen} onClose={()=> setaddModalOpen(false)}/>
         <ShareModal open = {sharemodalOpen} onclose={()=>setShareModalOpen(false)} />
     <div className='flex justify-end gap-2 p-3'>
@@ -39,6 +42,7 @@ function Dashboard() {
       
      </div> 
    </div>
+ 
     </div>
 
   )

@@ -30,7 +30,8 @@ export const Signin = ()=>{
 
     return <div className="h-screen w-screen bg-gray-200 flex justify-center
     items-center ">
-    <div className=" bg-white rounded-xl border min-w-48 p-10 ">
+    <div className=" bg-white rounded-xl shadow-md min-w-48 p-10 ">
+        <div>Login with your credentials.</div>
             <Input reference={usernameRef} placeholder="email" />
             <Input reference={passwordRef} placeholder="password" />
         <div className="pt-3 flex justify-center">
