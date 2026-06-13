@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { CrossIcon } from "../icons/CrossIcon"
 import { Button } from "./Ui library/Button"
 import axios from "axios"
+import { BACKEND_URL } from "../pages/config"
 
 export const LogoutModal = ({open , onClose}:{
     open: boolean,
@@ -10,7 +11,7 @@ export const LogoutModal = ({open , onClose}:{
 })=>{
     const navigate = useNavigate();
     async function logout(){
-        await axios.post("http://localhost:3000/api/v1/user/logout",{},
+        await axios.post(`${BACKEND_URL}/user/logout`,{},
             {withCredentials: true}
         )
 
