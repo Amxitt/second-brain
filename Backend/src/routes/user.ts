@@ -56,7 +56,9 @@ userRouter.post("/signin", validate, async (req, res) => {
         const token = jwt.sign({id: user._id}, JWT_PASSWORD)
         console.log(token);
         res.cookie("token", token ,{
-                httpOnly: true
+                httpOnly: true,
+                secure: true,
+                sameSite: "none"
             }).status(200).json({
                 success: true,
                 message: "you are signed in"
