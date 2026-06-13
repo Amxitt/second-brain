@@ -7,10 +7,10 @@ interface CardProps{
 }
 
 export const Card = ({title ,link,  type }: CardProps)=>{
-    return <div className="bg-white rounded-md border border-gray-100 w-72">
+    return <div className="bg-white rounded-md border border-gray-100 w-72 hover:shadow-[0_4px_6px_-2px_rgba(0,0,0,0.3)]">
         <div className="justify-between flex items-center p-2">
             <div className="flex gap-2 items-center">
-                <ShareIcon size = "sm"/>
+           
                 {title}
             </div>
         <div className="flex gap-2">

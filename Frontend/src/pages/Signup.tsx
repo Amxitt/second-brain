@@ -27,7 +27,6 @@ export const Signup = ()=>{
                 username, password
             })
             if(res.data.success){
-                alert(res.data.message)
             navigate("/signin")
             return
             }

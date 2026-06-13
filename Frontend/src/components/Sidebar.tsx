@@ -1,4 +1,5 @@
 import { BrainIcon } from "../icons/BrainIcon";
+import { DocumentIcon } from "../icons/DocumentIcon";
 import { TwitterIcon } from "../icons/Twitter";
 import { YoutubeIcon } from "../icons/YoutubeIcon";
 import { Button } from "./Ui library/Button";
@@ -18,6 +19,7 @@ export function Sidebar({onclick}: {
                 <div className="flex flex-col gap-2 pt-4 pl-5 pr-10">
                     <SidebarItem icon={<TwitterIcon/>} text="Tweets"/>
                     <SidebarItem icon={<YoutubeIcon/>} text="Videos" />
+                    <SidebarItem icon={<DocumentIcon/>} text ="Documents" />
                 </div>
             </div>    
             <div className="w-full mb-4 pl-4" onClick={onclick}>

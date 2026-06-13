@@ -20,11 +20,15 @@ export const Signin = ()=>{
        const res =  await axios.post(BACKEND_URL + "/user/signin", {
             username, password
         },{withCredentials: true})
-        
-        alert(res.data.message)
+        if(!res.data.success){
+           return alert(res.data.message)
+        }
+        console.log(res.data.message);
+
         navigate("/dashboard")
     }catch(e){
-         alert("please set valid username and ensure your password inlcudes a uppercasee, a number and should be 8 letters in length to proceed.")
+       
+         alert("non");
     }
 }
 

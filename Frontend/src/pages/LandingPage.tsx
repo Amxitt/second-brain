@@ -6,39 +6,86 @@ import { useNavigate } from "react-router-dom";
 export const LandingPage = ()=>{
 const navigate = useNavigate();
 
-    return<div className="w-full h-screen bg-gray-200 flex justify-center items-center">
-   
-         <div className="h-96 w-96 bg-white shadow-md rounded-xl ">
-            <div className= "flex justify-center bg-white rounded-md pt-2 ">
-                <div className="flex justify-center  w-fit h-fit items-center gap-1">
-                    <div className="text-purple-800 ">
-                        <BrainIcon size="lg"/>
-                    </div>
-                    <div className="font-bold text-4xl">
-                        Second Brain
-                    </div>
-                </div>    
-               
-            </div>
-             <div className="ml-20 p-4 flex justify-center w-56 h-28 text-xl text-purple-800">
-                    <p>Save links, notes, videos, tweets. Find them later.</p>
-                </div>
-            <div className=" mt-5 text-gray-500 flex justify-center">
-                <p>Start building your second brain.</p>
-                </div>
-                <div className="justify-center flex p-2">
-                    <Button variant="primary" size="md" text="Signup" onClick={()=> navigate("/signup")} />
-                </div>
-            <div className=" mt-5 text-gray-500 flex justify-center">
-                <p>Signin if old user</p>
-                </div>
-                <div className="justify-center flex p-2">
-                    <Button variant="secondary" size="md" text="Signin" onClick={()=> navigate("/signin")} />
-                </div>
+    return (
+  <div className="min-h-screen bg-gray-100">
+
+    <div className="max-w-5xl mx-auto px-6 py-20">
+
+      <div className="flex flex-col items-center text-center">
+
+        <div className="text-purple-800">
+          <BrainIcon size="lg" />
         </div>
-    
-        
+
+        <h1 className="text-6xl font-bold mt-4">
+          Second Brain
+        </h1>
+
+        <p className="mt-6 text-xl text-gray-600 max-w-xl">
+          Save tweets, videos, documents and ideas.
+          Build a personal knowledge base you can
+          access and share anytime.
+        </p>
+
+        <div className="flex gap-4 mt-10">
+          <Button
+            variant="primary"
+            size="md"
+            text="Get Started"
+            onClick={() => navigate("/signup")}
+          />
+
+          <Button
+            variant="secondary"
+            size="md"
+            text="Sign In"
+            onClick={() => navigate("/signin")}
+          />
+        </div>
+
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-6 mt-24">
+
+        <div className="bg-white rounded-xl p-6 shadow-sm">
+          <h3 className="font-semibold text-lg">
+            Save Content
+          </h3>
+
+          <p className="text-gray-600 mt-3">
+            Store tweets, videos and documents
+            in a single workspace.
+          </p>
+        </div>
+
+        <div className="bg-white rounded-xl p-6 shadow-sm">
+          <h3 className="font-semibold text-lg">
+            Rich Previews
+          </h3>
+
+          <p className="text-gray-600 mt-3">
+            Browse content using thumbnails
+            and embedded previews.
+          </p>
+        </div>
+
+        <div className="bg-white rounded-xl p-6 shadow-sm">
+          <h3 className="font-semibold text-lg">
+            Share Your Brain
+          </h3>
+
+          <p className="text-gray-600 mt-3">
+            Generate a public link and share
+            your knowledge collection.
+          </p>
+        </div>
+
+      </div>
+
     </div>
+
+  </div>
+);
 }
 
 

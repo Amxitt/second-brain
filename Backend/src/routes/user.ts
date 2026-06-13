@@ -7,6 +7,7 @@ import  jwt  from "jsonwebtoken";
 import { authentication } from "../middleware/auth.js";
 
 
+
 const userRouter = Router();
 
 
@@ -41,13 +42,14 @@ userRouter.post("/signin", validate, async (req, res) => {
         const user = await UserModel.findOne({email: username})
         if(!user){
             return res.status(403).json({
-                message:"wrong email password"
+                message:"user does not exists"
             })
         }
 
         const isGenuine = await bcrypt.compare(password, user.password);
         if(!isGenuine){
             return res.status(403).json({
+                success: false,
                 message: "wrong email or password"
             })
         }
