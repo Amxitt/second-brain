@@ -12,7 +12,7 @@ export function Sidebar({onclick}: {
     position-fixed left-0 top-0">
         <div>
             <div className="flex gap-2 text-bold items-center text-2xl pl-2 pt-4">
-            <div className="text-purple-800"> <BrainIcon /></div> 
+            <div className="text-purple-800"> <BrainIcon size="sm"/></div> 
                 <div>Second Brain</div>
             </div>
         
