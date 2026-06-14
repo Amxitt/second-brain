@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json())
 app.use(cookieParser());
 app.use(cors({
-  origin: ["https://secondbrain-tau-ten.vercel.app",
+  origin: ["https://second-brain-tau-pink.vercel.app",
   ],
   credentials: true
 }));
